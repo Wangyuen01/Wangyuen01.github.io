@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的炫酷空间站 🚀</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            height: 100vh;
+            overflow: hidden;
+            animation: gradient 15s ease infinite;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: 'Arial Black', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            animation: textScale 2s infinite alternate;
+            text-align: center;
+        }
+
+        .subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: #fff;
+            opacity: 0;
+            animation: fadeIn 2s forwards 1s;
+            max-width: 80%;
+        }
+
+        /* 粒子容器 */
+        #particles-js {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 按钮样式 */
+        .wormhole-btn {
+            position: absolute;
+            left: 50%;
+            bottom: 20%;
+            transform: translateX(-50%);
+            background: #555;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: 2px solid #666;
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        .wormhole-btn:hover {
+            background: #666;
+            transform: translate(-50%, -3px);
+            box-shadow: 0 7px 20px rgba(0,0,0,0.3);
+        }
+
+        /* 动画定义 */
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes textScale {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 0.8; }
+        }
+
+        /* 手机适配 */
+        @media (max-width: 768px) {
+            .wormhole-btn {
+                width: 80%;
+                padding: 12px 0;
+                font-size: 1em;
+                bottom: 15%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <div class="container">
+        <p class="subtitle">探索无限可能 | 创造数字奇迹</p>
+        <a href="https://wormhole.app/" 
+           target="_blank" 
+           class="wormhole-btn">
+           传送至文件虫洞 🕳️
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // 粒子特效初始化
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80 },
+                color: { value: '#ffffff' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5 },
+                size: { value: 3 },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: true,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                }
+            }
+        });
+
+        // 点击标题加速背景动画
+        document.querySelector('h1').addEventListener('click', () => {
+            document.body.style.animation = 'gradient 5s ease infinite';
+            setTimeout(() => {
+                document.body.style.animation = 'gradient 15s ease infinite';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
